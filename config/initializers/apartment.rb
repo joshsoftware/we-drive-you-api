@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 # You can have Apartment route to the appropriate Tenant by adding some Rack middleware.
 # Apartment can support many different "Elevators" that can take care of this routing to your data.
 # Require whichever Elevator you're using below or none if you have a custom one.
 #
 # require 'apartment/elevators/generic'
 # require 'apartment/elevators/domain'
-require 'apartment/elevators/subdomain'
+require "apartment/elevators/subdomain"
 # require 'apartment/elevators/first_subdomain'
 # require 'apartment/elevators/host'
 
@@ -12,11 +14,11 @@ require 'apartment/elevators/subdomain'
 # Apartment Configuration
 #
 Apartment.configure do |config|
-
   # Add any models that you do not want to be multi-tenanted, but remain in the global (public) namespace.
   # A typical example would be a Customer or Tenant model that stores each Tenant's information.
   #
-   config.excluded_models = %w{ Organization }
+
+  config.excluded_models = %w[Organization]
 
   # In order to migrate all of your Tenants you need to provide a list of Tenant names to Apartment.
   # You can make this dynamic by providing a Proc object to be called on migrations.
@@ -48,7 +50,9 @@ Apartment.configure do |config|
   #   end
   # end
   #
-    config.tenant_names = lambda { Organization.pluck :slug }
+
+  config.tenant_names = -> { Organization.pluck :slug }
+
   # PostgreSQL:
   #   Specifies whether to use PostgreSQL schemas or create a new database per Tenant.
   #
