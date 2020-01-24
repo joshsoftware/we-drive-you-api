@@ -130,7 +130,7 @@ Layout/IndentationConsistency:
  Severity: error
 
 AllCops:
- TargetRubyVersion: 2.5
+ TargetRubyVersion: 2.6
  Exclude:
     - db/schema.rb
     - db/migrate/*
