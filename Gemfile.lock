@@ -54,6 +54,7 @@ GEM
     ast (2.4.0)
     bootsnap (1.4.5)
       msgpack (~> 1.0)
+    brakeman (4.7.2)
     builder (3.2.4)
     byebug (11.1.0)
     concurrent-ruby (1.1.5)
@@ -193,6 +194,7 @@ DEPENDENCIES
   apartment
   apitome (~> 0.3.0)
   bootsnap (>= 1.1.0)
+  brakeman
   byebug
   faker (~> 2.10, >= 2.10.1)
   jwt
