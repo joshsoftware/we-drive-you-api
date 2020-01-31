@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_28_093854) do
+ActiveRecord::Schema.define(version: 2020_01_31_054318) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "cabs", force: :cascade do |t|
     t.integer "cab_capacity"
-    t.string "Vehicle_number"
+    t.string "vehicle_number"
     t.integer "driver_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
