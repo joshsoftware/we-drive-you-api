@@ -7,7 +7,9 @@ end
 # frozen_string_literal: true
 Rails.application.routes.draw do
   api_version(module: "V1", header: {name: "Accept", value: "application/vnd.cab-tab.com; version=1"}) do
-    resources :rides
+    resources :rides do
+      resources :ride_requests
+    end
     # get '/rides', to: 'rides#index'
     constraints SubdomainConstraint do
       resources :organizations
