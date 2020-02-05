@@ -1,7 +1,7 @@
 # We Drive You
 
 * Ruby version: 2.6.3
-* Rails version: 5.2.4.1
+* Rails version: 6.0.2.1
 * Database: PostgreSQL 11
 * Operating System: Ubuntu 18.04
 
