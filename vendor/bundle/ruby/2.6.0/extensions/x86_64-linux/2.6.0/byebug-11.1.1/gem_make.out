@@ -1,0 +1,19 @@
+current directory: /home/akansha/rails/Projects/we-drive-you-api/vendor/bundle/ruby/2.6.0/gems/byebug-11.1.1/ext/byebug
+/usr/share/rvm/rubies/ruby-2.6.3/bin/ruby -I /usr/share/rvm/rubies/ruby-2.6.3/lib/ruby/2.6.0 -r ./siteconf20200205-8594-1ekvkzf.rb extconf.rb
+creating Makefile
+
+current directory: /home/akansha/rails/Projects/we-drive-you-api/vendor/bundle/ruby/2.6.0/gems/byebug-11.1.1/ext/byebug
+make "DESTDIR=" clean
+
+current directory: /home/akansha/rails/Projects/we-drive-you-api/vendor/bundle/ruby/2.6.0/gems/byebug-11.1.1/ext/byebug
+make "DESTDIR="
+compiling breakpoint.c
+compiling byebug.c
+compiling context.c
+compiling locker.c
+compiling threads.c
+linking shared-object byebug/byebug.so
+
+current directory: /home/akansha/rails/Projects/we-drive-you-api/vendor/bundle/ruby/2.6.0/gems/byebug-11.1.1/ext/byebug
+make "DESTDIR=" install
+/usr/bin/install -m 0755 byebug.so ./.gem.20200205-8594-cdefuw/byebug
