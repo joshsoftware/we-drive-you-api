@@ -32,10 +32,10 @@ gem "versionist"
 gem "webpacker"
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
-gem "apartment"
+gem 'apartment', github: 'influitive/apartment', branch: 'development'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem "apitome", "~> 0.3.0"
+  # gem "apitome", "~> 0.3.0"
   gem "byebug", platforms: %i[mri mingw x64_mingw]
   gem "faker", "~> 2.10", ">= 2.10.1"
   gem "rspec-rails", "~> 3.9"
