@@ -10,7 +10,8 @@ class AdminMailer < ApplicationMailer
       Your Registration is initiated from our end, We will contact you soon to confirm your registartion.
       Thank-you for your intrest')
       mail = SendGrid::Mail.new(from, subject, to, content)
-      sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
+      sg = SendGrid::API.new(api_key: 
+      Rails.application.credentials.sendgrid[:secret_access_key])
       response = sg.client.mail._('send').post(request_body: mail.to_json)
       puts response.status_code
       
@@ -28,7 +29,7 @@ class AdminMailer < ApplicationMailer
       Hope you and your company enjoy using our App.
       Thank-you, Have a great day!!!')
       mail = SendGrid::Mail.new(from, subject, to, content)
-      sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
+      sg = SendGrid::API.new(api_key: Rails.application.credentials.sendgrid[:secret_access_key])
       response = sg.client.mail._('send').post(request_body: mail.to_json)
       puts response.status_code
     
@@ -44,7 +45,7 @@ class AdminMailer < ApplicationMailer
       This is to inform you that your registration could not be confirmed.
       Thank-you!')
       mail = SendGrid::Mail.new(from, subject, to, content)
-      sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
+      sg = SendGrid::API.new(api_key: Rails.application.credentials.sendgrid[:secret_access_key])
       response = sg.client.mail._('send').post(request_body: mail.to_json)
       puts response.status_code
     

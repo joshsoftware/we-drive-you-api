@@ -19,3 +19,11 @@ coverage/*
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+/config/credentials/development.key
+
+/config/credentials/production.key
+
+/config/credentials/staging.key
+
+/config/credentials/testing.key
