@@ -13,7 +13,7 @@ gem "pg", ">= 0.18", "< 2.0"
 gem "puma", "~> 3.11"
 gem "rack-cors"
 
-gem 'overcommit'
+gem "overcommit"
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
@@ -36,7 +36,7 @@ gem "versionist"
 gem "apartment"
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem "apitome", "~> 0.3.0"
+  # gem "apitome", "~> 0.3.0"
   gem "byebug", platforms: %i[mri mingw x64_mingw]
   gem "faker", "~> 2.10", ">= 2.10.1"
   gem "rspec-rails", "~> 3.9"
