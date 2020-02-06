@@ -13,6 +13,7 @@
 coverage/*
 
 /spec/tmp
+/vendor/bundle
 
 *.swp
 
