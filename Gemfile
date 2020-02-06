@@ -5,6 +5,12 @@ git_source(:github) {|repo| "https://github.com/#{repo}.git" }
 
 ruby "2.6.3"
 
+#To load environment variables from .env into ENV in development
+gem 'dotenv-rails', groups: [:development, :test]
+
+#For sending mail using sendgrid
+gem 'sendgrid-ruby'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0', '>= 6.0.2.1'
 # Use postgresql as the database for Active Record
