@@ -22,8 +22,8 @@ class JsonWebToken
       end
     end
 
-    def self.expired(payload)
-      Time.at(payload["exp"]) < Time.now
+    def expired(payload)
+      Time.at(payload[:exp]) < Time.now
     end
   end
 end

@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   api_version(module: "V1", header: {name: "Accept", value: "application/cab-tab.com; version=1"}) do
     resources :users
     post "/sessions/login", to: "sessions#login"
-
+    post "/sessions/decode_token", to: "sessions#decode_token"
     constraints SubdomainConstraint do
       resources :organizations
     end
