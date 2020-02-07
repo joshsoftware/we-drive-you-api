@@ -35,5 +35,11 @@ module WeDriveYouApi
     config.api_only = true
     config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
     config.i18n.default_locale = :en
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins "*"
+        resource "*", headers: :any, methods: %i[get post options]
+      end
+    end
   end
 end
