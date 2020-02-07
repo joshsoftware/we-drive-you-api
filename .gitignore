@@ -5,7 +5,6 @@
 !/log/.keep
 !/tmp/.keep
 
-/config/credentials.yml.enc
 /config/master.key
 /config/secrets.yml
 .byebug_history
@@ -16,7 +15,7 @@ coverage/*
 
 *.swp
 
-# Ignore master key for decrypting credentials and more.
+# Ignore keys for decrypting credentials and more.
 /config/master.key
 /config/credentials/development.key
 /config/credentials/production.key

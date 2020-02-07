@@ -24,10 +24,10 @@ default: &default
 
 development:
  <<: *default
- database: <%= ENV['CAB_DEV'] %>
- username: <%= ENV['DB_USERNAME'] %>
- password: <%= ENV['DB_PASSWORD'] %>
- port: <%= ENV['POSTGRES_PORT'] %>
+ database: <%= Rails.application.credentials.postgres[:cab_dev_db] %>
+ username: <%= Rails.application.credentials.postgres[:db_username] %>
+ password: <%= Rails.application.credentials.postgres[:db_password] %>
+ port: <%= Rails.application.credentials.postgres[:postgres_port] %>
 
 
 # The specified database role being used to connect to postgres.
@@ -62,6 +62,12 @@ development:
 # Do not set this db to the same as development or production.
 test:
  <<: *default
- database: <%= ENV['CAB_TEST'] %>
- username: <%= ENV['DB_USERNAME'] %>
- password: <%= ENV['DB_PASSWORD'] %>
+ database: <%= Rails.application.credentials.postgres[:cab_test_db] %>
+ username: <%= Rails.application.credentials.postgres[:db_username] %>
+ password: <%= Rails.application.credentials.postgres[:db_password] %>
+
+production:
+ <<: *default
+ database: <%= Rails.application.credentials.postgres[:cab_prod_db] %>
+ username: <%= Rails.application.credentials.postgres[:db_username] %>
+ password: <%= Rails.application.credentials.postgres[:db_password] %>
