@@ -21,3 +21,4 @@ coverage/*
 /config/credentials/production.key
 /config/credentials/staging.key
 /.env
+/test
