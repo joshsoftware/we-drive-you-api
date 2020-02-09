@@ -36,7 +36,9 @@ module V1
     end
 
     def set_organization
-      @organization = Organization.find(params[:id])
+       unless @organization = Organization.find_by(id: params[:id])
+        render_json("Error", "Could not find Organization with id=#{params[:id]}")
+      end
     end
 
     def organization_params
