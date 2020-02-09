@@ -2,52 +2,57 @@
 
 module V1
   class UsersController < BaseController
+    before_action :set_user, only: %i[show update destroy]
 
     def index
       @users = User.all
-      render json: @users
-    end
-
-    def new
-      @user = User.new
+      render json: @users, each_serializer: V1::UserSerializer
+      # render_json("All User details", @users)
     end
 
     def create
-      @user = User.new(user_params)
-      if @user.save
-        #render json: @user, status: :created
-        render json: {message: 'User created successfully', data: @user}, status: :created
+      if params[:user][:password] == params[:user][:confirm_password]
+        @user = User.new(user_params)
+        if @user.save
+          render_json("User created successfully", @user)
+        else
+          render_json("fail to create user", @user.errors.full_messages, :unprocessable_entity)
+        end
       else
-        #byebug
-        render json:   {errors: @user.errors.full_messages},
-               status: :unprocessable_entity
+        render_json("fail to create user", "Password not matches", :unprocessable_entity)
       end
     end
 
     def show
-      @user = User.find(params[:id])
-      render json: {message: 'User details', data: @user}, status: :ok
+      render json: @user, serializer: V1::UserSerializer
+      # render_json("User details", @user, V1::UserSerializer)
     end
 
     def update
-      @user = User.find(params[:id])
       if @user.update(user_params)
-        render json: {message: 'User updated successfully', data: @user}, status: :ok
+        @user.addresses.update(user_params)
+        render_json("User updated successfully", @user)
       else
-        render json:   {errors: @user.errors.full_messages},
-               status: :unprocessable_entity
+        render_json("fail to update user", @user.errors.full_messages, :unprocessable_entity)
       end
     end
 
     def destroy
-      @user = User.find(params[:id])
       @user.destroy
-      render json: {message: 'User is deleted', data: @user}, status: :ok
+      @user.addresses.destroy
+      render_json("User is deleted", @user)
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+    def set_user
+      @user = User.find(params[:id])
+    end
+
     def user_params
-      params.permit(:first_name, :last_name, :email_id, :contact_no, :password, :role_id)
+      params.require(:user).permit(:first_name, :last_name, :email_id, :contact_no, :password, :role_id, addresses_attributes: address_params)
+    end
+
+    def address_params
+      %i[address_line_1 address_line_2 city state pin_code country]
     end
   end
 end
