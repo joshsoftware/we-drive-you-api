@@ -2,7 +2,9 @@
 
 class Organization < ApplicationRecord
   after_create :create_tenant
-  validates :name, presence: true
+  has_many :addresses, as: :addressable, dependent: :destroy
+
+  validates :name, :slug, presence: true
   validates :slug, uniqueness: true, length: {maximum: 10}
 
   def tenant_name
