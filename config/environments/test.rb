@@ -46,4 +46,13 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
   config.credentials.content_path = "config/credentials/staging.yml.enc"
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    domain: 'example.com',
+    address: "smtp.sendgrid.net",
+    port: 587,
+    authentication: :plain,
+    user_name: 'apikey',
+    password: Rails.application.credentials.sendgrid[:secret_access_key]
+  }
 end
