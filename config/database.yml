@@ -71,3 +71,4 @@ production:
  database: <%= Rails.application.credentials.postgres[:cab_prod_db] %>
  username: <%= Rails.application.credentials.postgres[:db_username] %>
  password: <%= Rails.application.credentials.postgres[:db_password] %>
+ 
