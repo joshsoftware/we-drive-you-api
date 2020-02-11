@@ -5,7 +5,6 @@
 !/log/.keep
 !/tmp/.keep
 
-/config/master.key
 /config/secrets.yml
 .byebug_history
 coverage/*
@@ -20,4 +19,3 @@ coverage/*
 /config/credentials/development.key
 /config/credentials/staging.key
 /config/credentials/production.key
-

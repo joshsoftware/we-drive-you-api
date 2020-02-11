@@ -94,4 +94,5 @@ Rails.application.configure do
     user_name: 'apikey',
     password: Rails.application.credentials.sendgrid[:secret_access_key]
   }
+
 end
