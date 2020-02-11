@@ -9,11 +9,10 @@ module V1
     attr_reader :current_tenant, :current_user
 
     def render_json(message, data, status_code=:ok)
-      render json: {message: message, data: data}, status: status_code
+      render json: {message: I18n.t(message), data: data}, status: status_code
     end
 
     def authenticate!
-      # return invalid_authentication if !payload || !JsonWebToken.valid_payload(payload)
       load_current_user!
       invalid_authentication unless @current_user
     end
@@ -24,23 +23,21 @@ module V1
         @payload = JsonWebToken.decode(token)
         return token_invalid unless JsonWebToken.valid_payload(@payload)
       else
-        # render json: {message: "Header Not Present"}, status: :unauthorized
-        render_json("Invalid Token", "Missing Authorization Header", :unauthorized)
+        render_json(I18n.t("session.invalid"), "Missing Authorization Header", :unauthorized)
       end
     end
 
     def token_invalid
-      render_json("Token expired", "less time", :unauthorized)
+      render_json(I18n.t("session.expired"), "less time", :unauthorized)
     end
 
     def switch_tenant!
       @current_tenant = Organization.find_by(slug: @payload[:slug])
       render_json("Tenant Not found", "Tenant doesn't exists", :unauthorized) unless @current_tenant
-      Apartment::Tenant.switch!(@current_tenant)
+      Apartment::Tenant.switch!(@current_tenant.slug)
     end
 
     def invalid_authentication
-      # render json: {error: "Invalid Token"}, status: :unauthorized
       render_json("User Not Present", "Current user not found", :unauthorized)
     end
 
