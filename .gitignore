@@ -5,9 +5,6 @@
 !/log/.keep
 !/tmp/.keep
 
-/config/database.yml
-/config/credentials.yml.enc
-/config/master.key
 /config/secrets.yml
 .byebug_history
 coverage/*
@@ -18,3 +15,7 @@ coverage/*
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+/test
+/config/credentials/development.key
+/config/credentials/staging.key
+/config/credentials/production.key

@@ -12,7 +12,6 @@ Rails.application.routes.draw do
     post "/sessions/login", to: "sessions#login"
     post "/sessions/decode_token", to: "sessions#decode_token"
     constraints SubdomainConstraint do
-      resources :organizations
     end
   end
 end
