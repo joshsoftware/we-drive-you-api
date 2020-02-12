@@ -33,6 +33,7 @@ gem "webpacker"
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem "apartment", github: "influitive/apartment", branch: "development"
 
+gem "fast_jsonapi"
 gem "rack-cors"
 
 group :development, :test do
