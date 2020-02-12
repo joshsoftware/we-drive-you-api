@@ -1,0 +1,38 @@
+CommitMsg:
+  CapitalizedSubject:
+    enabled: false
+
+  EmptyMessage:
+    enabled: false
+
+  TrailingPeriod:
+    enabled: true
+
+  TextWidth:
+    enabled: false
+
+PreCommit:
+  ALL:
+    on_warn: fail
+
+  AuthorEmail:
+    enabled: true
+
+  AuthorName:
+    enabled: false
+
+  MergeConflicts:
+    enabled: true
+    
+  YamlSyntax:
+    enabled: true
+    
+  BundleCheck:
+    enabled: true
+
+
+  RuboCop:
+    enabled: true
+    on_warn: fail
+    problem_on_unmodified_line: ignore
+    command: ['bundle', 'exec', 'rubocop']  
