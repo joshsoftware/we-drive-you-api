@@ -3,15 +3,24 @@
 module V1
   class SessionsController < BaseController
     skip_before_action :authenticate!, only: :login
+    skip_before_action :validate_jwt_token!, only: :login
+    before_action :validate_params, only: :login
 
     def login
-      @user = User.find_by_email(params[:login][:email])
-      if @user&.authenticate(params[:login][:password])
-        token = JsonWebToken.encode(user_id: @user.id, slug: (params[:login][:slug]))
-        render_json("login success", token)
+      @user = User.find_by_email(login_params[:email])
+      if @user&.authenticate(login_params[:password])
+        token = JsonWebToken.encode(user_id: @user.id)
+        render_json(message: "User Login Succesfully", data: {auth_token: token, slug: current_tenant.slug}, status_code: :ok)
       else
-        render_json(I18n.t("session.invalid"), :unauthorized)
+        render_json(message: "Unauthorized User", status_code: :unauthorized)
       end
+    end
+
+    def validate_params
+      sign_in_params = params[:login][:email].present? &&
+                     params[:login][:password].present? &&
+                     params[:login][:slug].present?
+      render_json(message: "Insufficient Data", status_code: :unauthorized) unless sign_in_params
     end
 
     def login_params
