@@ -24,8 +24,6 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
-    active_model_serializers (0.9.3)
-      activemodel (>= 3.2)
     activejob (5.2.4.1)
       activesupport (= 5.2.4.1)
       globalid (>= 0.3.6)
@@ -59,6 +57,8 @@ GEM
     concurrent-ruby (1.1.5)
     crass (1.0.6)
     erubi (1.9.0)
+    fast_jsonapi (1.5)
+      activesupport (>= 4.2)
     ffi (1.12.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
@@ -163,11 +163,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  active_model_serializers
   apartment
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.1.0)
   byebug
+  fast_jsonapi
   listen (>= 3.0.5, < 3.2)
   pg (>= 0.18, < 2.0)
   puma (~> 3.11)
