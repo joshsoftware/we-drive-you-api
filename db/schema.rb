@@ -10,26 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_31_054318) do
+ActiveRecord::Schema.define(version: 2020_02_10_101018) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "cabs", force: :cascade do |t|
-    t.integer "cab_capacity"
     t.string "vehicle_number"
-    t.integer "driver_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer "capacity"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "drivers", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "mobile_number"
-    t.string "licence_number"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "hops", force: :cascade do |t|
+    t.string "location"
+    t.integer "credit"
+    t.integer "sequence_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "ride_id"
+    t.index ["ride_id"], name: "index_hops_on_ride_id"
   end
 
   create_table "organizations", force: :cascade do |t|
@@ -37,9 +37,19 @@ ActiveRecord::Schema.define(version: 2020_01_31_054318) do
     t.string "slug"
   end
 
+  create_table "ride_requests", force: :cascade do |t|
+    t.string "location"
+    t.string "scheduled_type"
+    t.bigint "user_id"
+    t.bigint "ride_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ride_id"], name: "index_ride_requests_on_ride_id"
+    t.index ["user_id"], name: "index_ride_requests_on_user_id"
+  end
+
   create_table "rides", force: :cascade do |t|
     t.time "time"
-    t.text "routes", default: [], array: true
     t.bigint "cab_id"
     t.integer "available_seats"
     t.string "type"

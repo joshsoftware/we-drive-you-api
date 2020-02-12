@@ -2,5 +2,8 @@
 
 class Ride < ApplicationRecord
   belongs_to :cab
-  validates :routes, :time, presence: true
+  has_many :hops
+  validates :available_seats, :time, :cab_id, presence: true
+  accepts_nested_attributes_for :hops, allow_destroy: true
+  validates_associated :hops
 end
