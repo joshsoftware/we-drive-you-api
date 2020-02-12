@@ -3,10 +3,12 @@
 module V1
   class UsersController < BaseController
     before_action :set_user, only: %i[show update destroy]
+    before_action :invite_code, only: %i[create]
 
     def index
       @users = User.all
-      render_json(serializer, @users, "User details")
+      render_json(message: I18n.t("success"), data: serializer(@users))
+      # render_json(I18n.t("success"), serializer(@users))
     end
 
     def create
@@ -14,34 +16,48 @@ module V1
         @user = User.new(user_params)
 
         if @user.save
-          render_json(serializer, @user, "User created successfully")
+          render_json(message: I18n.t("create.success", model_name: "User"), data: serializer(@user))
         else
-          render json: {errors: @user.errors.full_messages}, status: :unprocessable_entity
+          render_json(message: I18n.t("create.failure", model_name: "User"), data: @user.errors.full_messages, status_code: :unprocessable_entity)
         end
       else
-        render json: {errors: "Password not matches"}, status: :unprocessable_entity
+        render_json(message: I18n.t("create.failure", model_name: "User"), data: "Password not matches", status_code: :unprocessable_entity)
       end
     end
 
     def show
-      render_json(serializer, @user, "user details")
+      render_json(message: I18n.t("success"), data: serializer(@user))
     end
 
     def update
-      render_json(serializer, @user, "User updated successfully") if @user.update(user_params)
+      if @user.update(user_params)
+        render_json(message: I18n.t("update.success", model_name: "User"), data: serializer(@user))
+      else
+        render_json(message: I18n.t("update.failure", model_name: "User"),  status_code: :unprocessable_entity)
+      end
     end
 
     def destroy
-      @user.destroy
-      render_json(serializer, @user, "User deleted successfully")
+      if @user.destroy
+        render_json(message: I18n.t("destroy.success", model_name: "User"), data: serializer(@user))
+      else
+        render_json(message: I18n.t("destroy.failure", model_name: "User"), status_code: :unprocessable_entity)
+      end
     end
 
     def set_user
       @user = User.find(params[:id])
     end
 
-    def serializer
-      UserSerializer
+    def serializer(data)
+      UserSerializer.new(data)
+    end
+
+    def invite_code
+      unless params[:user][:invite_code] == "1234"
+        
+          render_json(message: I18n.t("create.failure", model_name: "User"), data: "Invite code is not match", status_code: :unprocessable_entity)
+      end
     end
 
     def user_params

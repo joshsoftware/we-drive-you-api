@@ -31,3 +31,27 @@
 
 en:
   hello: "Hello world"
+
+  login:
+    success: "Logged in successfully"
+    failure: "Failed to log in"
+
+  create:
+    success: "%{model_name} created successfully"
+    failure: "%{model_name} failed to create"
+
+  update:
+    success: "%{model_name} updated successfully"
+    failure: "%{model_name} failed to update"
+
+  destroy:
+    success: "%{model_name} deleted"
+    failure: "%{model_name} failed to delete"
+
+  session:
+    invalid: "Invalid Credentials, User could not be found"
+    expired: "The session has expired. Kindly login"
+
+  success: "Success"
+
+
