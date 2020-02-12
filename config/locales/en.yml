@@ -51,4 +51,5 @@ en:
   session:
     invalid: "Invalid Credentials, User could not be found"
     expired: "The session has expired. Kindly login"
+    tenant_not_found: "Tenant doesn't exists"
 
