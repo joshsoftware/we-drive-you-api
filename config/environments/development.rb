@@ -46,10 +46,13 @@ Rails.application.configure do
   # Highlight code that triggered database queries in logs.
   config.active_record.verbose_query_logs = true
 
+  config.action_dispatch.tld_length = 0
+
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+  config.credentials.content_path = "config/credentials/development.yml.enc"
 end
