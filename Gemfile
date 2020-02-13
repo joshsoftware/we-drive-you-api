@@ -41,6 +41,13 @@ group :development, :test do
   gem "faker", "~> 2.10", ">= 2.10.1"
   gem "rspec-rails", "~> 3.9"
   gem "rubocop", "~> 0.79.0", require: false
+  gem "factory_bot_rails", "~> 5.1", ">= 5.1.1"
+  # Faker, a port of Data::Faker from Perl, is used to easily generate fake data.
+  gem "faker", "~> 2.10", ">= 2.10.1"
+  # BDD for Ruby
+  gem "rspec", "~> 3.9"
+  # A testing framework for Rails 3+.
+  gem "rspec-rails", "~> 3.9"
 end
 
 group :development do
@@ -53,7 +60,10 @@ end
 
 group :test do
   gem "simplecov", require: false
+  gem 'database_cleaner-active_record'
 end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 # gem 'jwt'
+
+gem 'fast_jsonapi'
