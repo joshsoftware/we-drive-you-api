@@ -1,9 +1,13 @@
 # frozen_string_literal: true
 
 module V1
+
   class CabsController < BaseController
     before_action :set_cab, only: %i[show update destroy]
- 
+    before_action only: %i[create show update destroy] do
+      authorize(params[:action])
+    end
+
     def index
       @cabs = Cab.all
       render_json(message: I18n.t("success"), data: serializer(@cabs))
@@ -31,7 +35,6 @@ module V1
     end
  
     def destroy
-
       if @cab.destroy
         render_json(message: I18n.t("destroy.success", model_name: "Cab"), data: serializer(@cab))
       else
@@ -50,6 +53,11 @@ module V1
     def cab_params
       params.require(:cab).permit(:vehicle_number, :capacity, :min_passengers)
     end
+
+    def authorize(action)
+      authorize! :action, @cab
+    end
  
   end
- end
+
+end
