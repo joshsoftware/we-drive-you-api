@@ -4,14 +4,16 @@ module V1
   class UsersController < BaseController
     before_action :set_user, only: %i[show update destroy]
     before_action :invite_code, only: %i[create]
+    skip_before_action :validate_jwt_token!, only: :create
+    skip_before_action :authenticate!, only: :create
 
     def index
       @users = User.all
       render_json(message: I18n.t("success"), data: serializer(@users))
-      # render_json(I18n.t("success"), serializer(@users))
     end
 
     def create
+      byebug
       if params[:user][:password] == params[:user][:confirm_password]
         @user = User.new(user_params)
 
@@ -46,7 +48,10 @@ module V1
     end
 
     def set_user
-      @user = User.find(params[:id])
+      @user = current_user
+       unless  @user.id == params[:id].to_i
+          render_json(message: I18n.t("invalid"))
+      end
     end
 
     def serializer(data)
@@ -54,8 +59,8 @@ module V1
     end
 
     def invite_code
-      unless params[:user][:invite_code] == "1234"
-        
+      byebug
+      unless params[:user][:invite_code] ==  current_tenant.invite_code
           render_json(message: I18n.t("create.failure", model_name: "User"), data: "Invite code is not match", status_code: :unprocessable_entity)
       end
     end
@@ -67,5 +72,6 @@ module V1
     def address_params
       %i[address_line_1 address_line_2 city state pin_code country id]
     end
+
   end
 end

@@ -54,5 +54,7 @@ en:
     tenant_not_found: "Tenant doesn't exists"
 
   success: "Success"
+
+  invalid: "You are not allow to perform this action"
  
 
