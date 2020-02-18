@@ -17,7 +17,7 @@ module V1
       if @organization.save
         render_json(message: "organization created successfully", data: @organization)
       else
-        render_json(message: "fail to create organization", data: @organization.errors.full_messages, status: :unprocessable_entity)
+        render_json(message: "fail to create organization", data: @organization.errors.full_messages, status_code: :unprocessable_entity)
       end
     end
 
@@ -29,7 +29,7 @@ module V1
       if @organization.update(organization_params)
         render_json(message: "organization updated successfully", data: @organization)
       else
-        render_json(message: "fail to update organization", data: @organization.errors.full_messages, status: :unprocessable_entity)
+        render_json(message: "fail to update organization", data: @organization.errors.full_messages, status_code: :unprocessable_entity)
       end
     end
 
