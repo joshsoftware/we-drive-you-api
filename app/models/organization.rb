@@ -2,6 +2,10 @@
 
 class Organization < ApplicationRecord
   after_create :create_tenant
+
+  has_many :addresses, as: :addressable, dependent: :destroy
+  accepts_nested_attributes_for :addresses
+
   validates :name, presence: true
   validates :slug, uniqueness: true, length: {maximum: 10}
 

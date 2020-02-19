@@ -32,13 +32,17 @@ module V1
     end
 
     def switch_tenant!
-      slug = (@payload.&:slug) || request.subdomain
-      @current_tenant = Organization.find_by(slug: slug)
-      unless @current_tenant
-        render_json(message: I18n.t("session.tenant_not_found"), status_code:
-          :unauthorized)
+      if request.subdomain.present?
+        slug = request.subdomain
+        @current_tenant = Organization.find_by(slug: slug)
+        unless @current_tenant
+          render_json(message: I18n.t("session.tenant_not_found"), status_code:
+            :unauthorized)
+        end
+        Apartment::Tenant.switch!(@current_tenant.slug)
+      else
+        render_json(message: "subdomain is not present")
       end
-      Apartment::Tenant.switch!(@current_tenant.slug)
     end
 
     def invalid_authentication

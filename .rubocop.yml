@@ -2,7 +2,7 @@ Layout/LineLength:
  Max: 250
 
 Metrics/MethodLength:
- Max: 20
+ Max: 40
  Exclude:
    - "config/**/*.rb"
    - "db/migrate/*.rb"

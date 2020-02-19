@@ -1,5 +1,6 @@
-class AdminMailer < ApplicationMailer    
+# frozen_string_literal: true
 
+class AdminMailer < ApplicationMailer
   def send_signup_email(recipient, username)
     @username = username
     attachments["email.jpg"] = File.read(Rails.root.join("app/assets/images/email.jpg"))
@@ -18,6 +19,4 @@ class AdminMailer < ApplicationMailer
     attachments["email.jpg"] = File.read(Rails.root.join("app/assets/images/email.jpg"))
     mail(to: recipient, subject: "Registration Rejected")
   end
-  
 end
-
