@@ -1,0 +1,19 @@
+!!!
+%html
+%body
+  %div{:style => "border: 1px solid #cccccc; padding: 40px; color: black"}
+    .row{:style => "display: inline;"}
+    %span{:style => "float: right;"}
+    = image_tag attachments["email.jpg"].url, width: '800'
+    %p
+      Hello, #{@name}
+      %br
+      We are glad that you have decided to use our app service.
+      %br
+      Your Registration has been initiated from our end, We will contact you soon to confirm your registartion.
+      %br
+      Thank-you for your intrest!
+    %p
+      Thanks and regards,
+      %br
+      %b CabTab Team 

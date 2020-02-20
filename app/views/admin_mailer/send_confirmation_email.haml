@@ -1,0 +1,21 @@
+!!!
+%html
+%body
+  %div{:style => "border: 1px solid #cccccc; padding: 40px; color: black"}
+    .row{:style => "display: inline;"}
+    %span{:style => "float: right;"}
+    = image_tag attachments["email.jpg"].url, width: '800'
+    %p
+      Hello, #{@name}
+      %br
+      We are happy to share with you that Your Registration has been confirmed.
+      %br
+      This is your invitation link: #{@link}, you can share this link with your company employees.
+      %br
+      Hope you and your company enjoy using our App.
+      %br
+      Thank-you, Have a great day!
+    %p
+      Thanks and regards,
+      %br
+      %b CabTab Team 

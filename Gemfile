@@ -35,6 +35,8 @@ gem "apartment", github: "influitive/apartment", branch: "development"
 
 gem "rack-cors"
 
+gem "haml-rails", "~> 2.0"
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem "byebug", platforms: %i[mri mingw x64_mingw]

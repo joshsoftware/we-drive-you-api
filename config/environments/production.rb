@@ -85,4 +85,14 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
   config.credentials.content_path = "config/credentials/production.yml.enc"
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    domain: 'example.com',
+    address: "smtp.sendgrid.net",
+    port: 587,
+    authentication: :plain,
+    user_name: 'apikey',
+    password: Rails.application.credentials.sendgrid[:secret_access_key]
+  }
+
 end

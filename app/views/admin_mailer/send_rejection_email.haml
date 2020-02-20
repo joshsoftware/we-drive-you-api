@@ -1,0 +1,16 @@
+!!!
+%html
+%body
+  %div{:style => "border: 1px solid #cccccc; padding: 40px; color: black"}
+    .row{:style => "display: inline;"}
+    %span{:style => "float: right;"}
+    = image_tag attachments["email.jpg"].url, width: '800'
+    %p
+      Hello, #{@name}
+      %br
+      This is to inform you that your registration could not be confirmed.
+      Thank-you!
+    %p
+      Thanks and regards,
+      %br
+      %b CabTab Team 
