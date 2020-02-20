@@ -29,6 +29,14 @@ ActiveRecord::Schema.define(version: 2020_02_18_194951) do
     t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id"
   end
 
+  create_table "cabs", force: :cascade do |t|
+    t.string "vehicle_number"
+    t.integer "capacity"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "min_passengers"
+  end
+
   create_table "organizations", force: :cascade do |t|
     t.string "name"
     t.string "slug"

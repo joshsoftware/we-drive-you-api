@@ -32,17 +32,20 @@ gem "versionist"
 gem "webpacker"
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem "apartment", github: "influitive/apartment", branch: "development"
-
-gem "rack-cors"
-
 gem "haml-rails", "~> 2.0"
+gem "rack-cors"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem "byebug", platforms: %i[mri mingw x64_mingw]
-  gem "faker", "~> 2.10", ">= 2.10.1"
-  gem "rspec-rails", "~> 3.9"
+  gem "factory_bot_rails", "~> 5.1", ">= 5.1.1"
   gem "rubocop", "~> 0.79.0", require: false
+  # Faker, a port of Data::Faker from Perl, is used to easily generate fake data.
+  gem "faker", "~> 2.10", ">= 2.10.1"
+  # BDD for Ruby
+  gem "rspec", "~> 3.9"
+  # A testing framework for Rails 3+.
+  gem "rspec-rails", "~> 3.9"
 end
 
 group :development do
@@ -54,10 +57,12 @@ group :development do
 end
 
 group :test do
+  gem "database_cleaner-active_record"
   gem "simplecov", require: false
 end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 # gem "active_model_serializers"
+gem "cancancan"
 gem "fast_jsonapi"
 gem "jwt"
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]

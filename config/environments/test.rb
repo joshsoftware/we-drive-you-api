@@ -45,7 +45,7 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
-  config.credentials.content_path = "config/credentials/staging.yml.enc"
+  config.credentials.content_path = "config/credentials/test.yml.enc"
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     domain:         "example.com",

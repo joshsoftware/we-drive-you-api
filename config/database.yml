@@ -60,15 +60,15 @@ development:
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
-test:
- <<: *default
- database: <%= Rails.application.credentials.postgres[:cab_test_db] %>
- username: <%= Rails.application.credentials.postgres[:db_username] %>
- password: <%= Rails.application.credentials.postgres[:db_password] %>
+# test:
+#  <<: *default
+#  database: <%= Rails.application.credentials.postgres[:cab_test_db] %>
+#  username: <%= Rails.application.credentials.postgres[:db_username] %>
+#  password: <%= Rails.application.credentials.postgres[:db_password] %>
 
-production:
- <<: *default
- database: <%= Rails.application.credentials.postgres[:cab_prod_db] %>
- username: <%= Rails.application.credentials.postgres[:db_username] %>
- password: <%= Rails.application.credentials.postgres[:db_password] %>
+# production:
+#  <<: *default
+#  database: <%= Rails.application.credentials.postgres[:cab_prod_db] %>
+#  username: <%= Rails.application.credentials.postgres[:db_username] %>
+#  password: <%= Rails.application.credentials.postgres[:db_password] %>
  

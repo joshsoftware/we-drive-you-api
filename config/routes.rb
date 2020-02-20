@@ -10,8 +10,8 @@ Rails.application.routes.draw do
   api_version(module: "V1", header: {name: "Accept", value: "application/cab-tab.com; version=1"}) do
     resources :organization_sign_up
     resources :users
-
     resources :organizations
+    resources :cabs
 
     constraints(SubdomainConstraint) do
       resources :users

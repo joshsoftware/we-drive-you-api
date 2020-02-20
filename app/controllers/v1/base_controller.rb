@@ -52,5 +52,9 @@ module V1
     def load_current_user!
       @current_user = User.find_by(id: @payload["user_id"])
     end
+
+    rescue_from CanCan::AccessDenied do |exception|
+      render_json(message: exception.message)
+    end
   end
 end

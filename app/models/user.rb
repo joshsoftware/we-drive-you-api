@@ -11,9 +11,21 @@ class User < ApplicationRecord
   validates :email_id, format: {with: /\A[a-zA-Z0-9_.]+[@]{1}[a-zA-z]+[.]{1}[a-zA-Z]{2,4}+\z/}
   validates :password, length: {in: 4..15}
 
-  enum roles: {super_admin: 0, admin: 1, passanger: 2}
+  enum roles: {super_admin: 0, admin: 1, passenger: 2}
 
   def role
     User.roles.key(role_id)
+  end
+
+  def super_admin?
+    role == "super_admin"
+  end
+
+  def admin?
+    role == "admin"
+  end
+
+  def passenger?
+    role == "passenger"
   end
 end

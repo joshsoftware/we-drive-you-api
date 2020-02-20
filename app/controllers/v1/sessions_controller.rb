@@ -10,9 +10,8 @@ module V1
       @user = User.find_by_email_id(login_params[:email_id])
       if @user&.authenticate(login_params[:password])
         token = JsonWebToken.encode(user_id: @user.id)
-        render_json(message:     "User Login Succesfully",
-                    data:        {auth_token: token, slug: current_tenant.slug},
-                    status_code: :ok)
+        render_json(message: "error", status_code: :unauthorized) if token.nil?
+        render_json(message: "User Login Succesfully", data: {auth_token: token, slug: current_tenant.slug}, status_code: :ok)
       else
         render_json(
           message:     "Unauthorized Useremail",
