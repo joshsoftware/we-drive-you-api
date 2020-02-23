@@ -36,7 +36,7 @@ module WeDriveYouApi
     config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins "*"
-        resource "*", headers: :any, methods: %i[get post options]
+        resource "*", headers: :any, methods: %i[get post show delete put patch options]
       end
     end
   end

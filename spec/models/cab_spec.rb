@@ -42,4 +42,5 @@ RSpec.describe Cab, type: :model do
   #   cab = FactoryBot.create(:cab, capacity: invalid_capacity)
   #   expect(cab).to_not be valid
   # end
+  # pending "add some examples to (or delete) #{__FILE__}"
 end

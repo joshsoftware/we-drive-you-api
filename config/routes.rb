@@ -8,11 +8,12 @@ end
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   api_version(module: "V1", header: {name: "Accept", value: "application/cab-tab.com; version=1"}) do
+    resources :ride_request
     resources :organization_sign_up
     resources :users
     resources :organizations
     resources :cabs
-
+    resources :rides
     constraints(SubdomainConstraint) do
       resources :users
       post "/sessions/login", to: "sessions#login"

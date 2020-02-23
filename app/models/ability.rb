@@ -11,5 +11,9 @@ class Ability
     else
       can :read, Cab
     end
+    # if @user.present?
+    #   can :read, Cab
+    #   can :manage, Cab if @user.admin?
+    # end
   end
 end
