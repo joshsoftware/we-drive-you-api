@@ -47,7 +47,7 @@ module V1
     end
 
     def set_user
-      @user = current_user
+      @user = @current_user
       render_json(message: I18n.t("invalid")) unless @user.id == params[:id].to_i
     end
 

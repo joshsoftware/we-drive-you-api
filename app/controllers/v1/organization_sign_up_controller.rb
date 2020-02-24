@@ -15,8 +15,9 @@ module V1
     def create
       if params[:organization][:password] == params[:organization][:confirm_password]
         @organization = Organization.new(organization_params)
-
         if @organization.save
+          @invite_code = params[:organization][:slug].upcase + 5.times.map{rand(10)}.join
+          @organization.update(invite_code: @invite_code)
           Apartment::Tenant.switch!(@organization.slug)
           @user = User.new(user_params)
           if @user.save
